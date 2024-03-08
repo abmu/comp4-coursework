@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 public class Column {
     private String name;
-    private ArrayList<String> rows;
+    private ArrayList<String> rows = new ArrayList<>();
 
     public Column(String name) {
         this.name = name;
-        this.rows = new ArrayList<>();
     }
 
     public String getName() {
