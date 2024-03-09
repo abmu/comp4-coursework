@@ -11,23 +11,17 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 public class Model {
-    // The example code in this class should be replaced by your Model class code.
-    // The data should be stored in a suitable data structure.
     DataLoader dataLoader = new DataLoader();
     DataFrame dataFrame = new DataFrame();
 
-    public List<String> getPatientNames() {
-        return readFile("data/patients100.csv");
-    }
-
-    // This method illustrates how to read csv data from a file.
-    // The data files are stored in the root directory of the project (the directory your project is in),
-    // in the directory named data.
-    public List<String> readFile(String fileName) {
+    public void readFile(String fileName) {
         if (!dataLoader.loadFile(fileName)) {
-            return new ArrayList<>();
+            dataFrame = new DataFrame();
         }
         dataFrame = dataLoader.getDataFrame();
+    }
+
+    public List<String> getPatientIds() {
         return dataFrame.getColumnRows("ID");
     }
 
