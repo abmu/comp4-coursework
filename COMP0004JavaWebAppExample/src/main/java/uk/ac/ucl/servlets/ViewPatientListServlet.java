@@ -17,7 +17,7 @@ import java.util.List;
 // you replace it with your data.
 // The url http://localhost:8080/patientList.html is mapped to calling doGet on the servlet object.
 // The servlet object is created automatically, you just provide the class.
-@WebServlet("/patientList.html")
+@WebServlet("/patients")
 public class ViewPatientListServlet extends HttpServlet
 {
 
