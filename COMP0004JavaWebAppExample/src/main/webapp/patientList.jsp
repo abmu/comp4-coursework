@@ -12,7 +12,7 @@
   <h2>Patients:</h2>
   <ul>
     <%
-      List<String> patients = (List<String>) request.getAttribute("patientNames");
+      List<String> patients = (List<String>) request.getAttribute("patientIds");
       for (String patient : patients)
       {
         String href = "dummypage.html";
