@@ -1,10 +1,11 @@
 package uk.ac.ucl.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Column {
     private String name;
-    private ArrayList<String> rows = new ArrayList<>();
+    private List<String> rows = new ArrayList<>();
 
     public Column(String name) {
         this.name = name;
@@ -28,5 +29,9 @@ public class Column {
 
     public void addRowValue(String value) {
         rows.add(value);
+    }
+
+    public ArrayList<String> getRows() {
+        return new ArrayList<>(rows);
     }
 }

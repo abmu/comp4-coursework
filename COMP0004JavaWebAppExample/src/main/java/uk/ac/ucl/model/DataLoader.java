@@ -33,7 +33,7 @@ public class DataLoader {
         }
     }
 
-    public boolean readFile(String fileName) {
+    public boolean loadFile(String fileName) {
         dataFrame = new DataFrame();
         boolean success = false;
         try (Reader reader = new FileReader(fileName);

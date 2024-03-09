@@ -1,11 +1,11 @@
 package uk.ac.ucl.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DataFrame {
-    private Map<String, Column> columns = new HashMap();
+    private Map<String, Column> columns = new LinkedHashMap<>();
 
     public void addColumn(String columnName) {
         columns.put(columnName, new Column(columnName));
@@ -34,5 +34,9 @@ public class DataFrame {
 
     public void addValue(String columnName, String value) {
         columns.get(columnName).addRowValue(value);
+    }
+
+    public ArrayList<String> getColumnRows(String columnName) {
+        return columns.get(columnName).getRows();
     }
 }
