@@ -119,7 +119,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html lang=\"en\">\n");
       out.write("<head>\n");
       out.write("    ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/meta.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/head.jsp", out, false);
       out.write("\n");
       out.write("    <title>Patient Data App</title>\n");
       out.write("</head>\n");

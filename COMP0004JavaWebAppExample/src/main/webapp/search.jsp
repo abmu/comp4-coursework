@@ -2,10 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <jsp:include page="/meta.jsp"/>
-    <title>Patient Data App</title>
-</head>
+<jsp:include page="/head.jsp"/>
 <body>
 <jsp:include page="/header.jsp"/>
 <div class="main">
