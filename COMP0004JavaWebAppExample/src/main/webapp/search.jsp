@@ -9,16 +9,11 @@
 <body>
 <jsp:include page="/header.jsp"/>
 <div class="main">
-    <nav>
-        <ul>
-            <li>
-                <a href="patients">View the Patient ID List</a>
-            </li>
-            <li>
-                <a href="search">Search</a>
-            </li>
-        </ul>
-    </nav>
+    <h1>Search</h1>
+    <form method="POST" action="/runsearch">
+        <input type="text" name="searchstring" placeholder="Enter search keyword here"/>
+        <input type="submit" value="Search"/>
+    </form>
 </div>
 <jsp:include page="/footer.jsp"/>
 </body>
