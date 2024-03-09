@@ -4,17 +4,15 @@ import java.util.ArrayList;
 
 public class DataFrame {
     private ArrayList<Column> columns = new ArrayList<>();
+    private ArrayList<String> columnNames = new ArrayList<>();
 
-    public void addColumn(Column column) {
-        columns.add(column);
+    public void addColumn(String columnName) {
+        columns.add(new Column(columnName));
+        columnNames.add(columnName);
     }
 
     public ArrayList<String> getColumnNames() {
-        ArrayList<String> columnNames = new ArrayList<>(columns.size());
-        for (Column column : columns) {
-            columnNames.add(column.getName());
-        }
-        return columnNames;
+        return new ArrayList<>(columnNames);
     }
 
     public int getRowCount() {
