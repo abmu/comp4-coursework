@@ -17,7 +17,7 @@ public class Main {
     tomcat.setPort(8080);
 
     tomcat.getConnector();
-    StandardContext ctx = (StandardContext) tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
+    StandardContext ctx = (StandardContext) tomcat.addWebapp("", new File(webappDirLocation).getAbsolutePath());
 
     File additionWebInfClasses = new File("target/classes");
 
@@ -30,3 +30,7 @@ public class Main {
     tomcat.getServer().await();
   }
 }
+
+// TODO
+// Show patient information instead of dummy page
+// Make search results and search servlet into one servlet - post and get in one class

@@ -1,29 +1,19 @@
-<%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<jsp:include page="/head.jsp"/>
-<body>
-<jsp:include page="/header.jsp"/>
-<div class="main">
+<t:base>
     <h1>Search Result</h1>
-    <%
-        List<String> patients = (List<String>) request.getAttribute("result");
-        if (patients.size() != 0) {
-    %>
-    <ul>
-        <%
-            for (String patient : patients) {
-        %>
-        <li><%=patient%>
-        </li>
-        <% }
-        } else {%>
-        <p>Nothing found</p>
-        <%}%>
-    </ul>
-</div>
-<jsp:include page="/footer.jsp"/>
-</body>
-</html>
+    <c:choose>
+        <c:when test="${requestScope.result.size() > 0}">
+            <ul>
+                <c:forEach var="patient" items="${requestScope.result}">
+                    <li>${patient}</li>
+                </c:forEach>
+            </ul>
+        </c:when>
+        <c:otherwise>
+            <p>Nothing found</p>
+        </c:otherwise>
+    </c:choose>
+</t:base>
