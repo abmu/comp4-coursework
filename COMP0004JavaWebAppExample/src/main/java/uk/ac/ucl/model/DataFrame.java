@@ -3,6 +3,7 @@ package uk.ac.ucl.model;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class DataFrame {
     private Map<String, Column> columns = new LinkedHashMap<>();
@@ -38,5 +39,18 @@ public class DataFrame {
 
     public ArrayList<String> getColumnRows(String columnName) {
         return columns.get(columnName).getRows();
+    }
+
+    public int findIndex(String columnName, String value) {
+        return columns.get(columnName).findRowIndex(value);
+    }
+
+    public ArrayList<String> getRowColumns(int rowIndex) {
+        ArrayList<String> rowColumns = new ArrayList<>();
+        Set<String> columnNames = columns.keySet();
+        for (String columnName : columnNames) {
+            rowColumns.add(columns.get(columnName).getRowValue(rowIndex));
+        }
+        return rowColumns;
     }
 }

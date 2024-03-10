@@ -34,4 +34,8 @@ public class Column {
     public ArrayList<String> getRows() {
         return new ArrayList<>(rows);
     }
+
+    public int findRowIndex(String value) {
+        return rows.indexOf(value);
+    }
 }

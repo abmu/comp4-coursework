@@ -32,5 +32,5 @@ public class Main {
 }
 
 // TODO
-// Show patient information instead of dummy page
+// Show record headers as well
 // Make search results and search servlet into one servlet - post and get in one class

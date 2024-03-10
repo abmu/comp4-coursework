@@ -1,14 +1,6 @@
 package uk.ac.ucl.model;
 
-import java.io.Reader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 
 public class Model {
     DataLoader dataLoader = new DataLoader();
@@ -23,6 +15,11 @@ public class Model {
 
     public List<String> getPatientIds() {
         return dataFrame.getColumnRows("ID");
+    }
+
+    public List<String> getPatientRecord(String patientId) {
+        int rowIndex = dataFrame.findIndex("ID", patientId);
+        return dataFrame.getRowColumns(rowIndex);
     }
 
     // This also returns dummy data. The real version should use the keyword parameter to search
