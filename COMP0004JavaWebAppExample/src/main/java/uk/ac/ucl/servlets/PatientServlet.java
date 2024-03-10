@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/patients/*")
+public class PatientServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println(request.getPathInfo());
         ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/home.jsp");
+        System.out.println(context);
+        RequestDispatcher dispatcher = context.getRequestDispatcher("servlets/SearchServlet");
         dispatcher.forward(request, response);
     }
 }

@@ -30,7 +30,7 @@ public class PatientListServlet extends HttpServlet {
         // Invoke the JSP.
         // A JSP page is actually converted into a Java class, so behind the scenes everything is Java.
         ServletContext context = getServletContext();
-        RequestDispatcher dispatch = context.getRequestDispatcher("/patientList.jsp");
-        dispatch.forward(request, response);
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/patientList.jsp");
+        dispatcher.forward(request, response);
     }
 }

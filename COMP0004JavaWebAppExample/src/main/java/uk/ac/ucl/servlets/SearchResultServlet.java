@@ -27,7 +27,7 @@ public class SearchResultServlet extends HttpServlet {
 
         // Invoke the JSP page.
         ServletContext context = getServletContext();
-        RequestDispatcher dispatch = context.getRequestDispatcher("/searchResult.jsp");
-        dispatch.forward(request, response);
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/searchResult.jsp");
+        dispatcher.forward(request, response);
     }
 }

@@ -13,7 +13,7 @@ import java.io.IOException;
 public class SearchServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServletContext context = getServletContext();
-        RequestDispatcher dispatch = context.getRequestDispatcher("/search.jsp");
-        dispatch.forward(request, response);
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/search.jsp");
+        dispatcher.forward(request, response);
     }
 }
