@@ -6,7 +6,7 @@
     <ul>
         <c:forEach var="data" items="${requestScope.patientRecord}">
             <li>
-                <p>${data}</p>
+                <p>${data.key}: ${data.value}</p>
             </li>
         </c:forEach>
     </ul>

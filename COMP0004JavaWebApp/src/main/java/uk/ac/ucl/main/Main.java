@@ -30,7 +30,3 @@ public class Main {
     tomcat.getServer().await();
   }
 }
-
-// TODO
-// Show record headers as well - convert to map
-// Make search results and search servlet into one servlet - post and get in one class
