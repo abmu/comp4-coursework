@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 @WebServlet("/patients/*")
 public class PatientServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class PatientServlet extends HttpServlet {
         String patientId = pathParts[1];
 
         Model model = ModelFactory.getModel();
-        List<String> patientRecord = model.getPatientRecord(patientId);
+        Map<String, String> patientRecord = model.getPatientRecord(patientId);
 
         request.setAttribute("patientRecord", patientRecord);
 

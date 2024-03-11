@@ -1,6 +1,7 @@
 package uk.ac.ucl.model;
 
 import java.util.List;
+import java.util.Map;
 
 public class Model {
     DataLoader dataLoader = new DataLoader();
@@ -17,7 +18,7 @@ public class Model {
         return dataFrame.getColumnRows("ID");
     }
 
-    public List<String> getPatientRecord(String patientId) {
+    public Map<String, String> getPatientRecord(String patientId) {
         int rowIndex = dataFrame.findIndex("ID", patientId);
         return dataFrame.getRowColumns(rowIndex);
     }

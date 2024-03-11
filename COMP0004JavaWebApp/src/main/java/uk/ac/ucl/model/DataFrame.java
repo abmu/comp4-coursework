@@ -1,6 +1,7 @@
 package uk.ac.ucl.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -12,7 +13,7 @@ public class DataFrame {
         columns.put(columnName, new Column(columnName));
     }
 
-    public ArrayList<String> getColumnNames() {
+    public List<String> getColumnNames() {
         return new ArrayList<>(columns.keySet());
     }
 
@@ -37,7 +38,7 @@ public class DataFrame {
         columns.get(columnName).addRowValue(value);
     }
 
-    public ArrayList<String> getColumnRows(String columnName) {
+    public List<String> getColumnRows(String columnName) {
         return columns.get(columnName).getRows();
     }
 
@@ -45,11 +46,11 @@ public class DataFrame {
         return columns.get(columnName).findRowIndex(value);
     }
 
-    public ArrayList<String> getRowColumns(int rowIndex) {
-        ArrayList<String> rowColumns = new ArrayList<>();
+    public Map<String, String> getRowColumns(int rowIndex) {
+        Map<String, String> rowColumns = new LinkedHashMap<>();
         Set<String> columnNames = columns.keySet();
         for (String columnName : columnNames) {
-            rowColumns.add(columns.get(columnName).getRowValue(rowIndex));
+            rowColumns.put(columnName, columns.get(columnName).getRowValue(rowIndex));
         }
         return rowColumns;
     }

@@ -31,7 +31,7 @@ public class Column {
         rows.add(value);
     }
 
-    public ArrayList<String> getRows() {
+    public List<String> getRows() {
         return new ArrayList<>(rows);
     }
 

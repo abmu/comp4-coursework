@@ -7,7 +7,6 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DataLoader {
@@ -19,7 +18,7 @@ public class DataLoader {
         }
     }
 
-    private void loadRecord(ArrayList<String> columnNames, CSVRecord csvRecord) {
+    private void loadRecord(List<String> columnNames, CSVRecord csvRecord) {
         for (int i = 0; i < columnNames.size(); i++) {
             dataFrame.addValue(columnNames.get(i), csvRecord.get(i));
         }
@@ -27,7 +26,7 @@ public class DataLoader {
 
     private void loadRecords(List<CSVRecord> csvRecords) {
         loadHeaders(csvRecords.getFirst()); // First record contains column headers
-        ArrayList<String> columnNames = dataFrame.getColumnNames();
+        List<String> columnNames = dataFrame.getColumnNames();
         for (int i = 1; i < csvRecords.size(); i++) { // Skip zero index
             loadRecord(columnNames, csvRecords.get(i));
         }
