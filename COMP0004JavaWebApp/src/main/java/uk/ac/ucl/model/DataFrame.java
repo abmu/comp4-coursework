@@ -42,8 +42,8 @@ public class DataFrame {
         return columns.get(columnName).getRows();
     }
 
-    public int findIndex(String columnName, String value) {
-        return columns.get(columnName).findRowIndex(value);
+    public List<Integer> findIndexes(String columnName, String value) {
+        return columns.get(columnName).findRowIndexes(value);
     }
 
     public Map<String, String> getRowColumns(int rowIndex) {

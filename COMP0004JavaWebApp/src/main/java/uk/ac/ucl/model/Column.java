@@ -35,7 +35,13 @@ public class Column {
         return new ArrayList<>(rows);
     }
 
-    public int findRowIndex(String value) {
-        return rows.indexOf(value);
+    public List<Integer> findRowIndexes(String value) {
+        List<Integer> rowIndexes = new ArrayList<>();
+        for (int i = 0; i < rows.size(); i++) {
+            if (rows.get(i).contains(value)) {
+                rowIndexes.add(i);
+            }
+        }
+        return rowIndexes;
     }
 }

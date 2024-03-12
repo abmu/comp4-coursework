@@ -1,5 +1,6 @@
 package uk.ac.ucl.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,13 +20,16 @@ public class Model {
     }
 
     public Map<String, String> getPatientRecord(String patientId) {
-        int rowIndex = dataFrame.findIndex("ID", patientId);
+        int rowIndex = dataFrame.findIndexes("ID", patientId).getFirst();
         return dataFrame.getRowColumns(rowIndex);
     }
 
-    // This also returns dummy data. The real version should use the keyword parameter to search
-    // the data and return a list of matching items.
-    public List<String> searchFor(String keyword) {
-        return List.of("Search keyword is: " + keyword, "result1", "result2", "result3");
+    public List<String> searchFor(String columnName, String searchString) {
+        List<Integer> rowIndexes = dataFrame.findIndexes(columnName, searchString);
+        List<String> results = new ArrayList<>();
+        for (int rowIndex : rowIndexes) {
+            results.add(dataFrame.getRowColumns(rowIndex).get(columnName));
+        }
+        return results;
     }
 }
