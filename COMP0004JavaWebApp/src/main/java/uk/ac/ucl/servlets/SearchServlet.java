@@ -11,17 +11,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 @WebServlet("/search")
 public class SearchServlet extends HttpServlet {
-    private Map<String, String> searchFields = Map.of(
-            "ID", "ID",
-            "FIRST", "First name",
-            "LAST", "Last name",
-            "ZIP", "ZIP code"
-    );
+    private Map<String, String> searchFields = new LinkedHashMap<>() {{
+        put("ID", "ID");
+        put("FIRST", "First name");
+        put("LAST", "Last name");
+        put("ZIP", "ZIP code");
+    }};
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setAttribute("searchFields", searchFields);

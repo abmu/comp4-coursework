@@ -5,9 +5,7 @@
 <t:base>
     <ul>
         <c:forEach var="data" items="${requestScope.patientRecord}">
-            <li>
-                <p>${data.key}: ${data.value}</p>
-            </li>
+            <li>${data.key}: ${data.value}</li>
         </c:forEach>
     </ul>
 </t:base>

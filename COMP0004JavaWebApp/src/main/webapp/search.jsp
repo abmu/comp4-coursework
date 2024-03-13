@@ -17,13 +17,29 @@
         <c:choose>
             <c:when test="${requestScope.result.size() > 0}">
                 <p>${requestScope.result.size()} results found</p>
-                <ul>
+                <table>
+                    <tr>
+                        <c:forEach var="field" items="${requestScope.searchFields}">
+                            <th>${field.value}</th>
+                        </c:forEach>
+                    </tr>
                     <c:forEach var="patient" items="${requestScope.result}">
-                        <li>
-                            <a href="patients/${patient['ID']}">${patient['ID']}, ${patient[requestScope.selectedField]}</a>
-                        </li>
+                        <tr>
+                            <c:forEach var="field" items="${requestScope.searchFields}">
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${field.key == 'ID'}">
+                                            <a href="patients/${patient['ID']}">${patient['ID']}</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            ${patient[field.key]}
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                            </c:forEach>
+                        </tr>
                     </c:forEach>
-                </ul>
+                </table>
             </c:when>
             <c:otherwise>
                 <p>Nothing found</p>
