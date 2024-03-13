@@ -12,10 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet("/search")
 public class SearchServlet extends HttpServlet {
+    private Map<String, String> searchFields = Map.of(
+            "ID", "ID",
+            "FIRST", "First name",
+            "LAST", "Last name",
+            "ZIP", "ZIP code"
+    );
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.setAttribute("searchFields", searchFields);
+        request.setAttribute("selectedField", "ID");
+
         ServletContext context = getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/search.jsp");
         dispatcher.forward(request, response);
@@ -25,13 +36,10 @@ public class SearchServlet extends HttpServlet {
         Model model = ModelFactory.getModel();
         String columnName = request.getParameter("columnname");
         String searchString = request.getParameter("searchstring");
-        List<String> searchResult = model.searchFor(columnName, searchString);
+        List<Map<String, String>> searchResult = model.searchFor(columnName, searchString);
 
-        // SET VALUE OF SEARCH OPTION TO LAST OPTION USED
-        // SHOW ALL 4 SEARCHABLE FIELDS IN RESULT ie. ID, FIRST, LAST, ZIP
-        // BUG: SELECTING A RECORD WHEN THE SEARCH WAS NOT ON ID CAUSES AN ERROR
-
-        request.setAttribute("columnName", columnName);
+        request.setAttribute("searchFields", searchFields);
+        request.setAttribute("selectedField", columnName);
         request.setAttribute("searchString", searchString);
         request.setAttribute("result", searchResult);
 

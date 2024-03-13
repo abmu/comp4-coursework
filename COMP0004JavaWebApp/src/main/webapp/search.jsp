@@ -6,10 +6,9 @@
     <h2>Search</h2>
     <form method="POST" action="${pageContext.request.contextPath}/search">
         <select name="columnname">
-            <option value="ID">ID</option>
-            <option value="FIRST">First name</option>
-            <option value="LAST">Last name</option>
-            <option value="ZIP">ZIP code</option>
+            <c:forEach var="field" items="${requestScope.searchFields}">
+                <option value="${field.key}" ${field.key == requestScope.selectedField ? 'selected="Selected"' : ''}>${field.value}</option>
+            </c:forEach>
         </select>
         <input type="text" name="searchstring" placeholder="Enter search keyword here" value="${requestScope.searchString}"/>
         <input type="submit" value="Search"/>
@@ -21,7 +20,7 @@
                 <ul>
                     <c:forEach var="patient" items="${requestScope.result}">
                         <li>
-                            <a href="patients/${patient}">${patient}</a>
+                            <a href="patients/${patient['ID']}">${patient['ID']}, ${patient[requestScope.selectedField]}</a>
                         </li>
                     </c:forEach>
                 </ul>

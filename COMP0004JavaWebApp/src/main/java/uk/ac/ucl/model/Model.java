@@ -24,11 +24,11 @@ public class Model {
         return dataFrame.getRowColumns(rowIndex);
     }
 
-    public List<String> searchFor(String columnName, String searchString) {
+    public List<Map<String, String>> searchFor(String columnName, String searchString) {
         List<Integer> rowIndexes = dataFrame.findIndexes(columnName, searchString);
-        List<String> results = new ArrayList<>();
+        List<Map<String, String>> results = new ArrayList<>();
         for (int rowIndex : rowIndexes) {
-            results.add(dataFrame.getRowColumns(rowIndex).get(columnName));
+            results.add(dataFrame.getRowColumns(rowIndex));
         }
         return results;
     }
