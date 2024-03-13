@@ -54,4 +54,13 @@ public class DataFrame {
         }
         return rowColumns;
     }
+
+    public List<String> getRow(int rowIndex) {
+        List<String> row = new ArrayList<>();
+        Set<String> columnNames = columns.keySet();
+        for (String columnName : columnNames) {
+            row.add(columns.get(columnName).getRowValue(rowIndex));
+        }
+        return row;
+    }
 }

@@ -6,11 +6,13 @@ import java.util.Map;
 
 public class Model {
     DataLoader dataLoader = new DataLoader();
+    DataWriter dataWriter = new DataWriter();
     DataFrame dataFrame = new DataFrame();
 
     public void readFile(String fileName) {
         if (!dataLoader.loadFile(fileName)) {
             dataFrame = new DataFrame();
+            return;
         }
         dataFrame = dataLoader.getDataFrame();
     }
@@ -31,5 +33,9 @@ public class Model {
             results.add(dataFrame.getRowColumns(rowIndex));
         }
         return results;
+    }
+
+    public void writeFIle(String fileName) {
+        System.out.println(dataWriter.writeFile(fileName, dataFrame));
     }
 }
