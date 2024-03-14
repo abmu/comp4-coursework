@@ -8,6 +8,11 @@ public class Model {
     DataLoader dataLoader = new DataLoader();
     DataWriter dataWriter = new DataWriter();
     DataFrame dataFrame = new DataFrame();
+    String dataFileName;
+
+    public Model(String dataFileName) {
+        this.dataFileName = dataFileName;
+    }
 
     public void readFile(String fileName) {
         if (!dataLoader.loadFile(fileName)) {
@@ -15,6 +20,18 @@ public class Model {
             return;
         }
         dataFrame = dataLoader.getDataFrame();
+    }
+
+    public void readFile() {
+        readFile(dataFileName);
+    }
+
+    public void writeFile(String fileName) {
+        dataWriter.writeFile(fileName, dataFrame);
+    }
+
+    public void writeFile() {
+        writeFile(dataFileName);
     }
 
     public List<String> getPatientIds() {
@@ -35,7 +52,8 @@ public class Model {
         return results;
     }
 
-    public void writeFIle(String fileName) {
-        System.out.println(dataWriter.writeFile(fileName, dataFrame));
+    public void updatePatientRecord(String patientId, List<String> rowValues) {
+        int rowIndex = dataFrame.findIndexes("ID", patientId).getFirst();
+        dataFrame.putRow(rowIndex, rowValues);
     }
 }

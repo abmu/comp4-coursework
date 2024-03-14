@@ -33,12 +33,11 @@ public class SearchServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Model model = ModelFactory.getModel();
         String columnName = request.getParameter("columnname");
         String searchString = request.getParameter("searchstring");
         List<Map<String, String>> searchResult = model.searchFor(columnName, searchString);
-
         request.setAttribute("searchFields", searchFields);
         request.setAttribute("selectedField", columnName);
         request.setAttribute("searchString", searchString);

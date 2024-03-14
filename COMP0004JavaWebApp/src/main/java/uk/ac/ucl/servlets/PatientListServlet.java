@@ -18,7 +18,6 @@ public class PatientListServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Model model = ModelFactory.getModel();
         List<String> patientIds = model.getPatientIds();
-
         request.setAttribute("patientIds", patientIds);
 
         ServletContext context = getServletContext();

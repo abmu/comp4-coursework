@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/patients/*")
@@ -21,7 +24,23 @@ public class PatientServlet extends HttpServlet {
 
         Model model = ModelFactory.getModel();
         Map<String, String> patientRecord = model.getPatientRecord(patientId);
+        request.setAttribute("patientRecord", patientRecord);
 
+        ServletContext context = getServletContext();
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/patient.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String[] pathParts = request.getPathInfo().split("/");
+        String patientId = pathParts[1];
+
+        Model model = ModelFactory.getModel();
+        List<String> newPatientRecord = new ArrayList<>(Arrays.asList(request.getParameterValues("patientdata")));
+        model.updatePatientRecord(patientId, newPatientRecord);
+        model.writeFile();
+
+        Map<String, String> patientRecord = model.getPatientRecord(patientId);
         request.setAttribute("patientRecord", patientRecord);
 
         ServletContext context = getServletContext();

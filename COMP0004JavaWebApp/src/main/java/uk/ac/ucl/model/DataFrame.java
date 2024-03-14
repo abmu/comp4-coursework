@@ -63,4 +63,13 @@ public class DataFrame {
         }
         return row;
     }
+
+    public void putRow(int rowIndex, List<String> row) {
+        List<String> columnNames = getColumnNames();
+        for (int i = 0; i < columnNames.size(); i++) {
+            String columnName = columnNames.get(i);
+            String rowValue = row.get(i);
+            columns.get(columnName).setRowValue(rowIndex, rowValue);
+        }
+    }
 }

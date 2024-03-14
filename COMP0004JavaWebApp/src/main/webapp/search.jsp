@@ -11,7 +11,7 @@
             </c:forEach>
         </select>
         <input type="text" name="searchstring" placeholder="Enter search keyword here" value="${requestScope.searchString}"/>
-        <input type="submit" value="Search"/>
+        <button type="submit">Search</button>
     </form>
     <c:if test="${requestScope.result != null}">
         <c:choose>
