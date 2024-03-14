@@ -4,16 +4,16 @@
 
 <t:base>
     <div id="form">
-        <form method="post" action="/patients/${requestScope.patientRecord['ID']}">
+        <form method="post" action="${pageContext.request.contextPath}/add">
             <fieldset>
-                <c:forEach var="data" items="${requestScope.patientRecord}">
+                <c:forEach var="columnName" items="${requestScope.columnNames}">
                     <div class="form-group">
-                        <label for="${data.key}">${data.key}</label>
-                        <input type="text" name="patientdata" id="${data.key}" value="${data.value}"/>
+                        <label for="${columnName}">${columnName}</label>
+                        <input type="text" name="patientdata" id="${columnName}"/>
                     </div>
                 </c:forEach>
                 <div class="form-group">
-                    <button type="submit">Save</button>
+                    <button type="submit">Add</button>
                 </div>
             </fieldset>
         </form>

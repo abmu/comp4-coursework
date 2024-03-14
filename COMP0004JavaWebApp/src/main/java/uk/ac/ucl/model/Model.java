@@ -56,4 +56,12 @@ public class Model {
         int rowIndex = dataFrame.findIndexes("ID", patientId).getFirst();
         dataFrame.putRow(rowIndex, rowValues);
     }
+
+    public List<String> getColumnNames() {
+        return dataFrame.getColumnNames();
+    }
+
+    public void addPatientRecord(List<String> rowValues) {
+        dataFrame.addRow(rowValues);
+    }
 }
