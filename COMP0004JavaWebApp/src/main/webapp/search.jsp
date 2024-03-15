@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:base title="Search">
-    <h2>Search</h2>
+    <h1>Search</h1>
     <form method="GET" action="${pageContext.request.contextPath}/search">
         <select name="columnname">
             <c:forEach var="field" items="${requestScope.searchFields}">

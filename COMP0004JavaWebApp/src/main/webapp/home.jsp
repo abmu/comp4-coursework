@@ -3,15 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:base title="Home">
-    <ul>
-        <li>
-            <a href="patients">View the patient ID list</a>
-        </li>
-        <li>
-            <a href="search">Search</a>
-        </li>
-        <li>
-            <a href="add">Add new patient</a>
-        </li>
-    </ul>
+    <h1>Home</h1>
+    <p>This is a web application that lets you view patient records</p>
+    <p>You can modify or remove records by following the patient ID link</p>
 </t:base>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:base>
+    <h1>Update</h1>
     <div id="form">
         <form method="post" action="/patients/${requestScope.patientRecord['ID']}/edit">
             <fieldset>

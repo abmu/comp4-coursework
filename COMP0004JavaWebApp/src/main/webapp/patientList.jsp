@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:base title="Patient list">
-    <h2>Patients:</h2>
+    <h1>Patients</h1>
     <ul>
         <c:forEach var="patient" items="${requestScope.patientIds}">
             <li>
