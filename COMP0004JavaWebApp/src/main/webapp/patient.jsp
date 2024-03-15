@@ -21,7 +21,7 @@
         </form>
         <form method="post" action="/patients/${requestScope.patientRecord['ID']}/delete">
             <fieldset>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </div>
             </fieldset>

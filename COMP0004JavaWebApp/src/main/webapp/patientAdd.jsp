@@ -14,7 +14,7 @@
                     </div>
                 </c:forEach>
                 <div class="form-group mt-3">
-                    <button class="btn btn-primary" type="submit">Add</button>
+                    <button class="btn btn-success" type="submit">Add</button>
                     <a class="btn btn-secondary" href="${pageContext.request.contextPath}/patients">Cancel</a>
                 </div>
             </fieldset>
