@@ -5,13 +5,15 @@
 <t:base title="Search">
     <h1>Search</h1>
     <form method="GET" action="${pageContext.request.contextPath}/search">
-        <select name="columnname">
-            <c:forEach var="field" items="${requestScope.searchFields}">
-                <option value="${field.key}" ${field.key == requestScope.selectedField ? 'selected="Selected"' : ''}>${field.value}</option>
-            </c:forEach>
-        </select>
-        <input type="text" name="searchstring" placeholder="Enter search keyword here" value="${requestScope.searchString}"/>
-        <button type="submit">Search</button>
+        <div class="input-group">
+            <select class="form-select" name="columnname">
+                <c:forEach var="field" items="${requestScope.searchFields}">
+                    <option value="${field.key}" ${field.key == requestScope.selectedField ? 'selected="Selected"' : ''}>${field.value}</option>
+                </c:forEach>
+            </select>
+            <input class="form-control w-75" type="text" name="searchstring" placeholder="Enter search keyword here" value="${requestScope.searchString}"/>
+            <button class="btn btn-success" type="submit">Search</button>
+        </div>
     </form>
     <c:if test="${requestScope.result != null}">
         <c:choose>

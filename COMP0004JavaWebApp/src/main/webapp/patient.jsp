@@ -8,20 +8,21 @@
         <form method="post" action="/patients/${requestScope.patientRecord['ID']}/edit">
             <fieldset>
                 <c:forEach var="data" items="${requestScope.patientRecord}">
-                    <div class="form-group">
+                    <div class="form-group mb-2">
                         <label for="${data.key}">${data.key}</label>
-                        <input type="text" name="patientdata" id="${data.key}" value="${data.value}"/>
+                        <input class="form-control w-25" type="text" name="patientdata" id="${data.key}" value="${data.value}"/>
                     </div>
                 </c:forEach>
-                <div class="form-group">
-                    <button type="submit">Save</button>
+                <div class="form-group mt-3">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <a class="btn btn-secondary" href="${pageContext.request.contextPath}/patients">Cancel</a>
                 </div>
             </fieldset>
         </form>
         <form method="post" action="/patients/${requestScope.patientRecord['ID']}/delete">
             <fieldset>
                 <div class="form-group">
-                    <button type="submit">Delete</button>
+                    <button class="btn btn-danger" type="submit">Delete</button>
                 </div>
             </fieldset>
         </form>
