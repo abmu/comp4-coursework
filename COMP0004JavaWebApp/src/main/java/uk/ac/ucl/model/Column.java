@@ -44,4 +44,8 @@ public class Column {
         }
         return rowIndexes;
     }
+
+    public void deleteRowValue(int rowIndex) {
+        rows.remove(rowIndex);
+    }
 }

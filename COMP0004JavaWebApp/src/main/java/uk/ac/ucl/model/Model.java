@@ -64,4 +64,9 @@ public class Model {
     public void addPatientRecord(List<String> rowValues) {
         dataFrame.addRow(rowValues);
     }
+
+    public void deletePatientRecord(String patientId) {
+        int rowIndex = dataFrame.findIndexes("ID", patientId).getFirst();
+        dataFrame.deleteRow(rowIndex);
+    }
 }

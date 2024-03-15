@@ -21,6 +21,9 @@ public class PatientServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String[] pathParts = request.getPathInfo().split("/");
         String patientId = pathParts[1];
+        if (pathParts.length > 2) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
 
         Model model = ModelFactory.getModel();
         Map<String, String> patientRecord = model.getPatientRecord(patientId);
@@ -34,17 +37,23 @@ public class PatientServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String[] pathParts = request.getPathInfo().split("/");
         String patientId = pathParts[1];
+        String command = pathParts[2];
+        if (pathParts.length > 3 || !(command.equals("edit") || command.equals("delete"))) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
 
         Model model = ModelFactory.getModel();
-        List<String> newPatientRecord = new ArrayList<>(Arrays.asList(request.getParameterValues("patientdata")));
-        model.updatePatientRecord(patientId, newPatientRecord);
+        String redirect;
+        if (command.equals("edit")) {
+            List<String> newPatientRecord = new ArrayList<>(Arrays.asList(request.getParameterValues("patientdata")));
+            model.updatePatientRecord(patientId, newPatientRecord);
+            redirect = "/patients/" + patientId;
+        } else {
+            model.deletePatientRecord(patientId);
+            redirect = "/patients";
+        }
         model.writeFile();
 
-        Map<String, String> patientRecord = model.getPatientRecord(patientId);
-        request.setAttribute("patientRecord", patientRecord);
-
-        ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/patient.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect(redirect);
     }
 }

@@ -28,20 +28,16 @@ public class SearchServlet extends HttpServlet {
         request.setAttribute("searchFields", searchFields);
         request.setAttribute("selectedField", "ID");
 
-        ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/search.jsp");
-        dispatcher.forward(request, response);
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Model model = ModelFactory.getModel();
         String columnName = request.getParameter("columnname");
         String searchString = request.getParameter("searchstring");
-        List<Map<String, String>> searchResult = model.searchFor(columnName, searchString);
-        request.setAttribute("searchFields", searchFields);
-        request.setAttribute("selectedField", columnName);
-        request.setAttribute("searchString", searchString);
-        request.setAttribute("result", searchResult);
+
+        if (searchString != null && columnName != null) {
+            List<Map<String, String>> searchResult = model.searchFor(columnName, searchString);
+            request.setAttribute("selectedField", columnName);
+            request.setAttribute("searchString", searchString);
+            request.setAttribute("result", searchResult);
+        }
 
         ServletContext context = getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/search.jsp");

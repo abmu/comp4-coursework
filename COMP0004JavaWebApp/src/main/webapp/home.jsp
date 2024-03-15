@@ -5,10 +5,13 @@
 <t:base title="Home">
     <ul>
         <li>
-            <a href="patients">View the Patient ID List</a>
+            <a href="patients">View the patient ID list</a>
         </li>
         <li>
             <a href="search">Search</a>
+        </li>
+        <li>
+            <a href="add">Add new patient</a>
         </li>
     </ul>
 </t:base>

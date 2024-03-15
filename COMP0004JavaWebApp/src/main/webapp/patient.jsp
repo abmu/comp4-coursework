@@ -4,7 +4,7 @@
 
 <t:base>
     <div id="form">
-        <form method="post" action="/patients/${requestScope.patientRecord['ID']}">
+        <form method="post" action="/patients/${requestScope.patientRecord['ID']}/edit">
             <fieldset>
                 <c:forEach var="data" items="${requestScope.patientRecord}">
                     <div class="form-group">
@@ -14,6 +14,13 @@
                 </c:forEach>
                 <div class="form-group">
                     <button type="submit">Save</button>
+                </div>
+            </fieldset>
+        </form>
+        <form method="post" action="/patients/${requestScope.patientRecord['ID']}/delete">
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit">Delete</button>
                 </div>
             </fieldset>
         </form>

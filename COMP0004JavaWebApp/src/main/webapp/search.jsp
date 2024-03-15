@@ -4,7 +4,7 @@
 
 <t:base title="Search">
     <h2>Search</h2>
-    <form method="POST" action="${pageContext.request.contextPath}/search">
+    <form method="GET" action="${pageContext.request.contextPath}/search">
         <select name="columnname">
             <c:forEach var="field" items="${requestScope.searchFields}">
                 <option value="${field.key}" ${field.key == requestScope.selectedField ? 'selected="Selected"' : ''}>${field.value}</option>

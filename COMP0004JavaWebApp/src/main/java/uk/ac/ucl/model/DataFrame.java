@@ -81,4 +81,11 @@ public class DataFrame {
             columns.get(columnName).addRowValue(rowValue);
         }
     }
+
+    public void deleteRow(int rowIndex) {
+        Set<String> columnNames = columns.keySet();
+        for (String columnName : columnNames) {
+            columns.get(columnName).deleteRowValue(rowIndex);
+        }
+    }
 }
