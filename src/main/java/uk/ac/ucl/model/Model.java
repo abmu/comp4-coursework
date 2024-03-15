@@ -7,6 +7,7 @@ import java.util.Map;
 public class Model {
     DataLoader dataLoader = new DataLoader();
     DataWriter dataWriter = new DataWriter();
+    JSONWriter jsonWriter = new JSONWriter();
     DataFrame dataFrame = new DataFrame();
     String dataFileName;
 
@@ -32,6 +33,15 @@ public class Model {
 
     public void writeFile() {
         writeFile(dataFileName);
+    }
+
+    public void writeJsonFile(String fileName) {
+        jsonWriter.writeFile(fileName, dataFrame);
+    }
+
+    public void writeJsonFile() {
+        String jsonFileName = dataFileName.substring(0, dataFileName.lastIndexOf('.')) + ".json"; // Change file extension from .csv to .json, but not guaranteed to work depending on file path
+        writeJsonFile(jsonFileName);
     }
 
     public List<String> getPatientIds() {

@@ -6,4 +6,5 @@
     <h1>Home</h1>
     <p>This is a web application that lets you view patient records</p>
     <p>You can modify or remove records by following the patient ID link</p>
+    <p>The save to JSON option can be found in patients list page</p>
 </t:base>

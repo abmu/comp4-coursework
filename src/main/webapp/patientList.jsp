@@ -4,6 +4,11 @@
 
 <t:base title="Patient list">
     <h1>Patients</h1>
+    <form method="POST" action="${pageContext.request.contextPath}/patients">
+        <div class="input-group mb-2">
+            <button class="btn btn-info" type="submit">Save to JSON</button>
+        </div>
+    </form>
     <ul>
         <c:forEach var="patient" items="${requestScope.patientIds}">
             <li>

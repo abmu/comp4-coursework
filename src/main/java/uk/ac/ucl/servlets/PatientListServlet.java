@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet("/patients")
@@ -23,5 +25,12 @@ public class PatientListServlet extends HttpServlet {
         ServletContext context = getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/patientList.jsp");
         dispatcher.forward(request, response);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Model model = ModelFactory.getModel();
+        model.writeJsonFile();
+
+        response.sendRedirect("/patients");
     }
 }

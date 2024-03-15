@@ -34,7 +34,7 @@ public class PatientServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String[] pathParts = request.getPathInfo().split("/");
         String patientId = pathParts[1];
         String command = pathParts[2];
