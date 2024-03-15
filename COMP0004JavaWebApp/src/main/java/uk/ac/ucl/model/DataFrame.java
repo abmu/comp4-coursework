@@ -6,7 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class DataFrame {
+public class
+DataFrame {
     private Map<String, Column> columns = new LinkedHashMap<>();
 
     public void addColumn(String columnName) {
@@ -38,12 +39,20 @@ public class DataFrame {
         columns.get(columnName).addRowValue(value);
     }
 
+    public boolean hasValue(String columnName, String value) {
+        return columns.get(columnName).hasRowValue(value);
+    }
+
     public List<String> getColumnRows(String columnName) {
         return columns.get(columnName).getRows();
     }
 
-    public List<Integer> findIndexes(String columnName, String value) {
-        return columns.get(columnName).findRowIndexes(value);
+    public List<Integer> findIndexesContain(String columnName, String value) {
+        return columns.get(columnName).findIndexesContain(value);
+    }
+
+    public int findIndexExact(String columnName, String value) {
+        return columns.get(columnName).findIndexExact(value);
     }
 
     public Map<String, String> getRowColumns(int rowIndex) {

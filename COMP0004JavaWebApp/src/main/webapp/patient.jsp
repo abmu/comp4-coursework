@@ -10,7 +10,7 @@
                 <c:forEach var="data" items="${requestScope.patientRecord}">
                     <div class="form-group mb-2">
                         <label for="${data.key}">${data.key}</label>
-                        <input class="form-control w-25" type="text" name="patientdata" id="${data.key}" value="${data.value}"/>
+                        <input class="form-control w-25" type="text" name="patientdata" id="${data.key}" value="${data.value}" ${data.key == 'ID' ? 'readonly' : ''}/>
                     </div>
                 </c:forEach>
                 <div class="form-group mt-3">

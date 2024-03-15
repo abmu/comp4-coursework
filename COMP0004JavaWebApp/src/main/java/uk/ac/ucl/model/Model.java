@@ -39,12 +39,12 @@ public class Model {
     }
 
     public Map<String, String> getPatientRecord(String patientId) {
-        int rowIndex = dataFrame.findIndexes("ID", patientId).getFirst();
+        int rowIndex = dataFrame.findIndexExact("ID", patientId);
         return dataFrame.getRowColumns(rowIndex);
     }
 
     public List<Map<String, String>> searchFor(String columnName, String searchString) {
-        List<Integer> rowIndexes = dataFrame.findIndexes(columnName, searchString);
+        List<Integer> rowIndexes = dataFrame.findIndexesContain(columnName, searchString);
         List<Map<String, String>> results = new ArrayList<>();
         for (int rowIndex : rowIndexes) {
             results.add(dataFrame.getRowColumns(rowIndex));
@@ -53,7 +53,7 @@ public class Model {
     }
 
     public void updatePatientRecord(String patientId, List<String> rowValues) {
-        int rowIndex = dataFrame.findIndexes("ID", patientId).getFirst();
+        int rowIndex = dataFrame.findIndexExact("ID", patientId);
         dataFrame.putRow(rowIndex, rowValues);
     }
 
@@ -62,11 +62,14 @@ public class Model {
     }
 
     public void addPatientRecord(List<String> rowValues) {
-        dataFrame.addRow(rowValues);
+        String patientId = rowValues.getFirst();
+        if (!dataFrame.hasValue("ID", patientId)) {
+            dataFrame.addRow(rowValues);
+        }
     }
 
     public void deletePatientRecord(String patientId) {
-        int rowIndex = dataFrame.findIndexes("ID", patientId).getFirst();
+        int rowIndex = dataFrame.findIndexExact("ID", patientId);
         dataFrame.deleteRow(rowIndex);
     }
 }

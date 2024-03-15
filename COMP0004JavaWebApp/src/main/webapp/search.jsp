@@ -5,7 +5,7 @@
 <t:base title="Search">
     <h1>Search</h1>
     <form method="GET" action="${pageContext.request.contextPath}/search">
-        <div class="input-group">
+        <div class="input-group mb-2">
             <select class="form-select" name="columnname">
                 <c:forEach var="field" items="${requestScope.searchFields}">
                     <option value="${field.key}" ${field.key == requestScope.selectedField ? 'selected="Selected"' : ''}>${field.value}</option>
@@ -44,7 +44,7 @@
                 </table>
             </c:when>
             <c:otherwise>
-                <p>Nothing found</p>
+                <p>No results found</p>
             </c:otherwise>
         </c:choose>
     </c:if>

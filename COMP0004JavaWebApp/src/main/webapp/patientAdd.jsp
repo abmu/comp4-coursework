@@ -10,7 +10,7 @@
                 <c:forEach var="columnName" items="${requestScope.columnNames}">
                     <div class="form-group mb-2">
                         <label for="${columnName}">${columnName}</label>
-                        <input class="form-control w-25" type="text" name="patientdata" id="${columnName}"/>
+                        <input class="form-control w-25" type="text" name="patientdata" id="${columnName}" ${columnName == 'ID' ? 'required="true"' : ''}/>
                     </div>
                 </c:forEach>
                 <div class="form-group mt-3">

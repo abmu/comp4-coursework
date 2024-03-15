@@ -31,11 +31,15 @@ public class Column {
         rows.add(value);
     }
 
+    public boolean hasRowValue(String value) {
+        return rows.contains(value);
+    }
+
     public List<String> getRows() {
         return new ArrayList<>(rows);
     }
 
-    public List<Integer> findRowIndexes(String value) {
+    public List<Integer> findIndexesContain(String value) {
         List<Integer> rowIndexes = new ArrayList<>();
         for (int i = 0; i < rows.size(); i++) {
             if (rows.get(i).contains(value)) {
@@ -43,6 +47,10 @@ public class Column {
             }
         }
         return rowIndexes;
+    }
+
+    public int findIndexExact(String value) {
+        return rows.indexOf(value);
     }
 
     public void deleteRowValue(int rowIndex) {
