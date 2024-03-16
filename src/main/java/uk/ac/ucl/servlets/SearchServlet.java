@@ -22,6 +22,7 @@ public class SearchServlet extends HttpServlet {
         put("FIRST", "First name");
         put("LAST", "Last name");
         put("ADDRESS", "Address");
+        put("BIRTHDATE", "Birthdate");
     }};
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

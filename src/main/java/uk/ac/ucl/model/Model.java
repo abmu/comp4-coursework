@@ -61,9 +61,8 @@ public class Model {
         return dataFrame.getColumnRows("ID");
     }
 
-    public Map<String, String> getPatientRecord(String patientId) {
-        int rowIndex = dataFrame.findIndexExact("ID", patientId);
-        return dataFrame.getRowColumns(rowIndex);
+    public List<String> getColumnNames() {
+        return dataFrame.getColumnNames();
     }
 
     public List<Map<String, String>> searchFor(String columnName, String searchString) {
@@ -75,13 +74,14 @@ public class Model {
         return results;
     }
 
+    public Map<String, String> getPatientRecord(String patientId) {
+        int rowIndex = dataFrame.findIndexExact("ID", patientId);
+        return dataFrame.getRowColumns(rowIndex);
+    }
+
     public void updatePatientRecord(String patientId, List<String> rowValues) {
         int rowIndex = dataFrame.findIndexExact("ID", patientId);
         dataFrame.putRow(rowIndex, rowValues);
-    }
-
-    public List<String> getColumnNames() {
-        return dataFrame.getColumnNames();
     }
 
     public void addPatientRecord(List<String> rowValues) {
