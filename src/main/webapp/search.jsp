@@ -19,28 +19,32 @@
         <c:choose>
             <c:when test="${requestScope.result.size() > 0}">
                 <p>${requestScope.result.size()} results found</p>
-                <table>
-                    <tr>
-                        <c:forEach var="field" items="${requestScope.searchFields}">
-                            <th>${field.value}</th>
-                        </c:forEach>
-                    </tr>
-                    <c:forEach var="patient" items="${requestScope.result}">
+                <table class="table table-hover">
+                    <thead>
                         <tr>
                             <c:forEach var="field" items="${requestScope.searchFields}">
-                                <td>
-                                    <c:choose>
-                                        <c:when test="${field.key == 'ID'}">
-                                            <a href="patients/${patient['ID']}">${patient['ID']}</a>
-                                        </c:when>
-                                        <c:otherwise>
-                                            ${patient[field.key]}
-                                        </c:otherwise>
-                                    </c:choose>
-                                </td>
+                                <th>${field.value}</th>
                             </c:forEach>
                         </tr>
-                    </c:forEach>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="patient" items="${requestScope.result}">
+                            <tr>
+                                <c:forEach var="field" items="${requestScope.searchFields}">
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${field.key == 'ID'}">
+                                                <a href="patients/${patient['ID']}">${patient['ID']}</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${patient[field.key]}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </c:forEach>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
                 </table>
             </c:when>
             <c:otherwise>

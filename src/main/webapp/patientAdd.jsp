@@ -2,7 +2,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:base>
+<t:base title="Add patient">
     <h1>Add</h1>
     <div id="form">
         <form method="post" action="${pageContext.request.contextPath}/add">

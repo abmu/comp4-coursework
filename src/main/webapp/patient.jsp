@@ -2,7 +2,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:base>
+<t:base title="Edit patient">
     <h1>Update</h1>
     <div id="form">
         <form method="post" action="/patients/${requestScope.patientRecord['ID']}/edit">
