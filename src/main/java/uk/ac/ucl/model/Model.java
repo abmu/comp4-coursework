@@ -1,18 +1,32 @@
 package uk.ac.ucl.model;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Model {
-    DataLoader dataLoader = new DataLoader();
-    DataWriter dataWriter = new DataWriter();
-    JSONWriter jsonWriter = new JSONWriter();
-    DataFrame dataFrame = new DataFrame();
-    String dataFileName;
+    private DataLoader dataLoader = new DataLoader();
+    private DataWriter dataWriter = new DataWriter();
+    private JSONWriter jsonWriter = new JSONWriter();
+    private DataFrame dataFrame = new DataFrame();
+    private String dataFileName;
+    private String jsonFileName;
 
     public Model(String dataFileName) {
         this.dataFileName = dataFileName;
+        this.jsonFileName = "src/main/webapp/" + getJsonName(dataFileName);
+    }
+
+    private String getJsonName(String fileName) {
+        // remove current path and change file extension from .csv to .json (not guaranteed to work depending on original file path)
+        String namePart = Paths.get(fileName).getFileName().toString();
+        return namePart.substring(0, namePart.lastIndexOf('.')) + ".json";
+    }
+
+    public String getJsonName() {
+        return getJsonName(dataFileName);
     }
 
     public void readFile(String fileName) {
@@ -40,7 +54,6 @@ public class Model {
     }
 
     public void writeJsonFile() {
-        String jsonFileName = dataFileName.substring(0, dataFileName.lastIndexOf('.')) + ".json"; // Change file extension from .csv to .json, but not guaranteed to work depending on file path
         writeJsonFile(jsonFileName);
     }
 

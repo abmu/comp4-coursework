@@ -7,6 +7,7 @@
     <form method="POST" action="${pageContext.request.contextPath}/patients">
         <div class="input-group mb-2">
             <button class="btn btn-info" type="submit">Save to JSON</button>
+<%--            <a href="patients100.json" download>Download JSON</a>--%>
         </div>
     </form>
     <ul>

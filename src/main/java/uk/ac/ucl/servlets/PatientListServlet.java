@@ -30,7 +30,6 @@ public class PatientListServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Model model = ModelFactory.getModel();
         model.writeJsonFile();
-
-        response.sendRedirect("/patients");
+        response.sendRedirect(model.getJsonName());
     }
 }
