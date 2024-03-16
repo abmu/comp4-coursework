@@ -10,6 +10,7 @@
 <%--            <a href="patients100.json" download>Download JSON</a>--%>
         </div>
     </form>
+    <p>${requestScope.patientIds.size()} patients</p>
     <ul>
         <c:forEach var="patient" items="${requestScope.patientIds}">
             <li>
