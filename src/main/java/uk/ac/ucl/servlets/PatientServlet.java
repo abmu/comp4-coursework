@@ -2,6 +2,7 @@ package uk.ac.ucl.servlets;
 
 import uk.ac.ucl.model.Model;
 import uk.ac.ucl.model.ModelFactory;
+import uk.ac.ucl.model.Patient;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,7 +15,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet("/patients/*")
 public class PatientServlet extends HttpServlet {
@@ -26,7 +26,7 @@ public class PatientServlet extends HttpServlet {
         }
 
         Model model = ModelFactory.getModel();
-        Map<String, String> patientRecord = model.getPatientRecord(patientId);
+        Patient patientRecord = model.getPatientRecord(patientId);
         request.setAttribute("patientRecord", patientRecord);
 
         ServletContext context = getServletContext();

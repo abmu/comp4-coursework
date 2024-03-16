@@ -4,40 +4,40 @@
 
 <t:base title="Search">
     <h1>Search</h1>
-    <form method="GET" action="${pageContext.request.contextPath}/search">
+    <form method="GET" action="/search">
         <div class="input-group mb-2">
             <select class="form-select" name="columnname">
-                <c:forEach var="field" items="${requestScope.searchFields}">
-                    <option value="${field.key}" ${field.key == requestScope.selectedField ? 'selected="Selected"' : ''}>${field.value}</option>
+                <c:forEach var="field" items="${searchFields}">
+                    <option value="${field.key}" ${field.key == selectedField ? 'selected="Selected"' : ''}>${field.value}</option>
                 </c:forEach>
             </select>
-            <input class="form-control w-75" type="text" name="searchstring" placeholder="Enter search keyword here" value="${requestScope.searchString}"/>
+            <input class="form-control w-75" type="text" name="searchstring" placeholder="Enter search keyword here" value="${searchString}"/>
             <button class="btn btn-success" type="submit">Search</button>
         </div>
     </form>
-    <c:if test="${requestScope.result != null}">
+    <c:if test="${result != null}">
         <c:choose>
-            <c:when test="${requestScope.result.size() > 0}">
-                <p>${requestScope.result.size()} results found</p>
+            <c:when test="${result.size() > 0}">
+                <p>${result.size()} results found</p>
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <c:forEach var="field" items="${requestScope.searchFields}">
+                            <c:forEach var="field" items="${searchFields}">
                                 <th>${field.value}</th>
                             </c:forEach>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="patient" items="${requestScope.result}">
+                        <c:forEach var="patient" items="${result}">
                             <tr>
-                                <c:forEach var="field" items="${requestScope.searchFields}">
+                                <c:forEach var="field" items="${searchFields}">
                                     <td>
                                         <c:choose>
                                             <c:when test="${field.key == 'ID'}">
-                                                <a href="patients/${patient['ID']}">${patient['ID']}</a>
+                                                <a href="/patients/${patient.fields['ID']}">${patient.fields['ID']}</a>
                                             </c:when>
                                             <c:otherwise>
-                                                ${patient[field.key]}
+                                                ${patient.fields[field.key]}
                                             </c:otherwise>
                                         </c:choose>
                                     </td>

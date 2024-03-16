@@ -65,18 +65,18 @@ public class Model {
         return dataFrame.getColumnNames();
     }
 
-    public List<Map<String, String>> searchFor(String columnName, String searchString) {
+    public List<Patient> searchFor(String columnName, String searchString) {
         List<Integer> rowIndexes = dataFrame.findIndexesContain(columnName, searchString);
-        List<Map<String, String>> results = new ArrayList<>();
+        List<Patient> results = new ArrayList<>();
         for (int rowIndex : rowIndexes) {
-            results.add(dataFrame.getRowColumns(rowIndex));
+            results.add(new Patient(dataFrame.getRowColumns(rowIndex)));
         }
         return results;
     }
 
-    public Map<String, String> getPatientRecord(String patientId) {
+    public Patient getPatientRecord(String patientId) {
         int rowIndex = dataFrame.findIndexExact("ID", patientId);
-        return dataFrame.getRowColumns(rowIndex);
+        return new Patient(dataFrame.getRowColumns(rowIndex));
     }
 
     public void updatePatientRecord(String patientId, List<String> rowValues) {

@@ -2,6 +2,7 @@ package uk.ac.ucl.servlets;
 
 import uk.ac.ucl.model.Model;
 import uk.ac.ucl.model.ModelFactory;
+import uk.ac.ucl.model.Patient;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -34,7 +35,7 @@ public class SearchServlet extends HttpServlet {
         String searchString = request.getParameter("searchstring");
 
         if (searchString != null && columnName != null) {
-            List<Map<String, String>> searchResult = model.searchFor(columnName, searchString);
+            List<Patient> searchResult = model.searchFor(columnName, searchString);
             request.setAttribute("selectedField", columnName);
             request.setAttribute("searchString", searchString);
             request.setAttribute("result", searchResult);
