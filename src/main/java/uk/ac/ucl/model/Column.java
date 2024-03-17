@@ -40,9 +40,10 @@ public class Column {
     }
 
     public List<Integer> findIndexesContain(String value) {
+        String lowerCaseValue = value.toLowerCase();
         List<Integer> rowIndexes = new ArrayList<>();
         for (int i = 0; i < rows.size(); i++) {
-            if (rows.get(i).contains(value)) {
+            if (rows.get(i).toLowerCase().contains(lowerCaseValue)) {
                 rowIndexes.add(i);
             }
         }

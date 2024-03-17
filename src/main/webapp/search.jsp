@@ -12,7 +12,11 @@
                 </c:forEach>
             </select>
             <input class="form-control w-75" type="text" name="searchstring" placeholder="Enter search keyword here" value="${searchString}"/>
-            <button class="btn btn-success" type="submit">Search</button>
+            <button class="btn btn-success" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+            </button>
         </div>
     </form>
     <c:if test="${result != null}">
@@ -28,16 +32,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="patient" items="${result}">
+                        <c:forEach var="patientRecord" items="${result}">
                             <tr>
                                 <c:forEach var="field" items="${searchFields}">
                                     <td>
                                         <c:choose>
                                             <c:when test="${field.key == 'ID'}">
-                                                <a href="/patients/${patient.fields['ID']}">${patient.fields['ID']}</a>
+                                                <a href="/patients/${patientRecord.fields['ID']}">${patientRecord.fields['ID']}</a>
                                             </c:when>
                                             <c:otherwise>
-                                                ${patient.fields[field.key]}
+                                                ${patientRecord.fields[field.key]}
                                             </c:otherwise>
                                         </c:choose>
                                     </td>

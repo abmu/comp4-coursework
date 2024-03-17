@@ -64,6 +64,15 @@ DataFrame {
         return rowColumns;
     }
 
+    public List<Map<String, String>> getAllRowColumns() {
+        List<Map<String, String>> allRowColumns = new ArrayList<>();
+        int rowCount = getRowCount();
+        for (int i = 0; i < rowCount; i++) {
+            allRowColumns.add(getRowColumns(i));
+        }
+        return allRowColumns;
+    }
+
     public List<String> getRow(int rowIndex) {
         List<String> row = new ArrayList<>();
         Set<String> columnNames = columns.keySet();
