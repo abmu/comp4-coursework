@@ -172,4 +172,12 @@ public class Model {
                         Collectors.counting()
                 ));
     }
+
+    public Map<String, Long> getCityCount() {
+        return getAllPatients().stream()
+                .collect(Collectors.groupingBy(
+                        patient -> '"' + patient.getCity() + '"',
+                        Collectors.counting()
+                ));
+    }
 }
