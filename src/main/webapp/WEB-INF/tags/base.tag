@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </nav>
-        <div id="content" class="container mt-2">
+        <div id="content" class="container mt-3">
             <jsp:doBody/>
         </div>
         <footer id="footer">

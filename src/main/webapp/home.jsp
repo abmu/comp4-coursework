@@ -4,8 +4,9 @@
 
 <t:base title="Home">
     <h1>Home</h1>
-    <p>This is a web application that lets you view patient records</p>
-    <p>You can modify or remove a record on the patient's record page </p>
-    <p>The save to JSON option can be found at the top of the patients list</p>
-    <p>In order to work properly, this website requires a csv file with column headers to already exist in the data/ folder</p>
+    <p>UCL COMP0004 Coursework</p>
+    <p>This is a web application that lets you access patient records. Patient records can be created, updated, or deleted</p>
+    <p>The save to JSON option can be found at the top of the patients list page</p>
+    <p>You can search for patients using a particular field in the search page</p>
+    <p>There are also a variety of statistics and graphs based on the data that can be viewed in the statistics page</p>
 </t:base>
