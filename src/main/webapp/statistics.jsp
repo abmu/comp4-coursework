@@ -4,7 +4,6 @@
 
 <t:base title="Statistics">
     <h1>Statistics</h1>
-    <p>TODO: gender number (M/F/Other), ethnicity, age distribution</p>
     <div class="mb-4">
         <h4>Oldest patient</h4>
         <p>${oldestPatient.age} years old</p>
@@ -17,6 +16,12 @@
         <p>${youngestPatient.age} years old</p>
         <div class="list-group">
             <a class="list-group-item list-group-item-action" href="/patients/${youngestPatient.fields['ID']}">${youngestPatient.fields['ID']}</a>
+        </div>
+    </div>
+    <div class="mb-4">
+        <h4>Age distribution</h4>
+        <div>
+            <canvas id="ageDistribution"></canvas>
         </div>
     </div>
     <div class="mb-4">
@@ -35,4 +40,42 @@
             </c:forEach>
         </div>
     </div>
+    <div class="mb-4">
+        <h4>Genders</h4>
+        <div>
+            <canvas id="genderCount"></canvas>
+        </div>
+    </div>
+    <div class="mb-4">
+        <h4>Ethnicities</h4>
+        <div>
+            <canvas id="ethnicityCount"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function createChart(id, xValues, yValues) {
+            const ctx = document.getElementById(id);
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        data: yValues,
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    }
+                }
+            });
+        }
+
+        createChart('ageDistribution', ${ageDistribution.keySet()}, ${ageDistribution.values()});
+        createChart('genderCount', ${genderCount.keySet()}, ${genderCount.values()});
+        createChart('ethnicityCount', ${ethnicityCount.keySet()}, ${ethnicityCount.values()});
+    </script>
 </t:base>

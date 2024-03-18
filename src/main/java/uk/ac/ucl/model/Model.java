@@ -131,4 +131,29 @@ public class Model {
                 .max(Comparator.comparing(entry -> entry.getValue().size()))
                 .orElse(null);
     }
+
+    public Map<String, Long> getAgeDistribution() {
+
+        return getAllPatients().stream()
+                .collect(Collectors.groupingBy(
+                        patient -> '"' + patient.getAgeRange() + '"',
+                        Collectors.counting()
+                ));
+    }
+
+    public Map<String, Long> getGenderCount() {
+        return getAllPatients().stream()
+                .collect(Collectors.groupingBy(
+                        patient -> '"' + patient.getGender() + '"', // Add quotation marks to make the key set string a valid JavaScript array
+                        Collectors.counting()
+                ));
+    }
+
+    public Map<String, Long> getEthnicityCount() {
+        return getAllPatients().stream()
+                .collect(Collectors.groupingBy(
+                        patient -> '"' + patient.getEthnicity() + '"',
+                        Collectors.counting()
+                ));
+    }
 }
