@@ -62,12 +62,18 @@
                     labels: xValues,
                     datasets: [{
                         data: yValues,
+                        backgroundColor: "rgba(0, 255, 155, 0.4)"
                     }]
                 },
                 options: {
                     plugins: {
                         legend: {
                             display: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            suggestedMax: Math.max(...yValues) * 1.1
                         }
                     }
                 }

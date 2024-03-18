@@ -1,10 +1,11 @@
 package uk.ac.ucl.model;
 
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.LinkedHashMap;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class Model {
@@ -132,19 +133,34 @@ public class Model {
                 .orElse(null);
     }
 
-    public Map<String, Long> getAgeDistribution() {
-
-        return getAllPatients().stream()
-                .collect(Collectors.groupingBy(
-                        patient -> '"' + patient.getAgeRange() + '"',
-                        Collectors.counting()
-                ));
+    public Map<String, Integer> getAgeDistribution() {
+        Map<String, Integer> ageDistribution = new LinkedHashMap<>() {{
+            put("\"0-9\"", 0);
+            put("\"10-19\"", 0);
+            put("\"20-29\"", 0);
+            put("\"30-39\"", 0);
+            put("\"40-49\"", 0);
+            put("\"50-59\"", 0);
+            put("\"60-69\"", 0);
+            put("\"70-79\"", 0);
+            put("\"80-89\"", 0);
+            put("\"90-99\"", 0);
+        }};
+        List<Patient> patients = getAllPatients();
+        for (Patient patient : patients) {
+            String ageRange = '"' + patient.getAgeRange() + '"'; // Add quotation marks to make the key set string a valid JavaScript array
+            if (!ageDistribution.containsKey(ageRange)) {
+                ageDistribution.put(ageRange, 0);
+            }
+            ageDistribution.put(ageRange, ageDistribution.get(ageRange) + 1);
+        }
+        return ageDistribution;
     }
 
     public Map<String, Long> getGenderCount() {
         return getAllPatients().stream()
                 .collect(Collectors.groupingBy(
-                        patient -> '"' + patient.getGender() + '"', // Add quotation marks to make the key set string a valid JavaScript array
+                        patient -> '"' + patient.getGender() + '"',
                         Collectors.counting()
                 ));
     }

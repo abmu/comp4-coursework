@@ -27,7 +27,7 @@ public class StatisticsServlet extends HttpServlet {
         request.setAttribute("longestNamePatient", longestNamePatient);
         Map.Entry<String, List<Patient>> mostCommonCity = model.getMostCommonCity();
         request.setAttribute("mostCommonCity", mostCommonCity);
-        Map<String, Long> ageDistribution = model.getAgeDistribution();
+        Map<String, Integer> ageDistribution = model.getAgeDistribution();
         request.setAttribute("ageDistribution", ageDistribution);
         Map<String, Long> genderCount = model.getGenderCount();
         request.setAttribute("genderCount", genderCount);
