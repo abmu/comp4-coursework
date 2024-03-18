@@ -4,7 +4,6 @@
 
 <t:base title="Home">
     <h1>Home</h1>
-    <p>TODO: Add option to select csv file in home page</p>
     <p>This is a web application that lets you view patient records</p>
     <p>You can modify or remove a record on the patient's record page </p>
     <p>The save to JSON option can be found at the top of the patients list</p>

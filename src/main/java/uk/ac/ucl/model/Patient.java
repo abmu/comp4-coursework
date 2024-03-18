@@ -45,12 +45,15 @@ public class Patient {
         return getName().replaceAll("\\s","").length();
     }
 
-    private String toTitleCase(String str) {
+    private String capitaliseFirst(String str) {
+        if (str.length() < 2) {
+            return str.toUpperCase();
+        }
         return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
 
     public String getCity() {
-        return toTitleCase(getField("CITY")) + ", " + toTitleCase(getField("STATE"));
+        return capitaliseFirst(getField("CITY")) + ", " + capitaliseFirst(getField("STATE"));
     }
 
     public String getGender() {
@@ -65,7 +68,7 @@ public class Patient {
     }
 
     public String getEthnicity() {
-        return toTitleCase(getField("ETHNICITY"));
+        return capitaliseFirst(getField("ETHNICITY"));
     }
 
     public String getAgeRange() {
