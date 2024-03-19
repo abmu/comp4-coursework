@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class JSONWriter {
+public class JSONWriter implements DataWriter {
     private List<Map<String, String>> getListRowColumns(DataFrame dataFrame) {
         List<Map<String, String>> listRowColumns = new ArrayList<>();
         int rowCount = dataFrame.getRowCount();

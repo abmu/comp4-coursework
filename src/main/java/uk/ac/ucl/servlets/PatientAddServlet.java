@@ -31,7 +31,7 @@ public class PatientAddServlet extends HttpServlet {
         Model model = ModelFactory.getModel();
         List<String> newPatientRecord = new ArrayList<>(Arrays.asList(request.getParameterValues("patientdata")));
         model.addPatientRecord(newPatientRecord);
-        model.writeFile();
+        model.writeCsvFile();
 
         response.sendRedirect("/patients");
     }

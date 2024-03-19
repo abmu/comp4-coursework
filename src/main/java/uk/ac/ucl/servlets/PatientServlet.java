@@ -52,7 +52,7 @@ public class PatientServlet extends HttpServlet {
             model.deletePatientRecord(patientId);
             redirect = "/patients";
         }
-        model.writeFile();
+        model.writeCsvFile();
 
         response.sendRedirect(redirect);
     }

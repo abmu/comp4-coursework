@@ -10,15 +10,15 @@ import java.util.stream.Collectors;
 
 public class Model {
     private DataLoader dataLoader = new DataLoader();
-    private DataWriter dataWriter = new DataWriter();
-    private JSONWriter jsonWriter = new JSONWriter();
+    private DataWriter csvWriter = new CSVWriter();
+    private DataWriter jsonWriter = new JSONWriter();
     private DataFrame dataFrame = new DataFrame();
-    private String dataFileName;
+    private String csvFileName;
     private String jsonFileName;
 
-    public Model(String dataFileName) {
-        this.dataFileName = dataFileName;
-        this.jsonFileName = "src/main/webapp/" + getJsonFileName(dataFileName);
+    public Model(String csvFileName) {
+        this.csvFileName = csvFileName;
+        this.jsonFileName = "src/main/webapp/" + getJsonFileName(csvFileName);
     }
 
     private String getJsonFileName(String fileName) {
@@ -28,10 +28,12 @@ public class Model {
     }
 
     public String getJsonFileName() {
-        return getJsonFileName(dataFileName);
+        return getJsonFileName(csvFileName);
     }
 
     public void readFile(String fileName) {
+        csvFileName = fileName;
+        jsonFileName = "src/main/webapp/" + getJsonFileName(fileName);
         if (!dataLoader.loadFile(fileName)) {
             dataFrame = new DataFrame();
             return;
@@ -40,23 +42,19 @@ public class Model {
     }
 
     public void readFile() {
-        readFile(dataFileName);
+        readFile(csvFileName);
     }
 
-    public void writeFile(String fileName) {
+    public void writeFile(DataWriter dataWriter, String fileName) {
         dataWriter.writeFile(fileName, dataFrame);
     }
 
-    public void writeFile() {
-        writeFile(dataFileName);
-    }
-
-    public void writeJsonFile(String fileName) {
-        jsonWriter.writeFile(fileName, dataFrame);
+    public void writeCsvFile() {
+        writeFile(csvWriter, csvFileName);
     }
 
     public void writeJsonFile() {
-        writeJsonFile(jsonFileName);
+        writeFile(jsonWriter, jsonFileName);
     }
 
     public List<String> getPatientIds() {
